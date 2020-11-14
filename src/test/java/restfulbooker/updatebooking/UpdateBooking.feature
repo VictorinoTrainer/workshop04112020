@@ -9,7 +9,9 @@ Feature: Update Booking
     Scenario: Verificar petición correcta para actualizar una reserva reciba 200
       * def SignInResponse = call read('classpath:common/CreateToken.feature')
       * def accessToken = SignInResponse.response.token
-      Given path '/booking/' + 9
+      * def CreateBookingResponse = call read('classpath:common/CreateBooking.feature')
+      * def BookingId = CreateBookingResponse.response.bookingid
+      Given path '/booking/' + BookingId
       And cookie token = accessToken
       And request
       """

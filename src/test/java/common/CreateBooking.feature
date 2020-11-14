@@ -8,8 +8,6 @@ Feature: Create Booking
     * header Accept = 'application/json'
 
     Scenario: Verificar petición correcta para crear una reserva reciba 200
-      * string schema = read('classpath:restfulbooker/createbooking/jsonschema/scenario1-schema.json')
-      * def SchemaUtils = Java.type('intuit.karate.restfulbooker.util.SchemaUtils')
       Given path '/booking'
       And request
       """
@@ -27,4 +25,3 @@ Feature: Create Booking
       """
       When method POST
       Then status 200
-      And assert SchemaUtils.isValid(response, schema)
